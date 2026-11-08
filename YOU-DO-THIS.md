@@ -4,19 +4,11 @@ The repo, the tests, the desk, and the dry-quote client are done. These steps ne
 
 Deadline: **14 Nov 2026, 23:59 UTC**. Leave the hosted page up through **18 Nov**, and through **25 Nov** if you can.
 
-## 1. Host the judge page on Vercel
+## 1. The judge page is already on Vercel
 
-Vercel is the right host for this page. It serves `public/` and the `api/` routes, and it stays up without a process you have to watch. Do not put a Telegram poller on Vercel. This project does not have one.
+Open https://allowance-vert.vercel.app and click **Agent pays for the scan**, then **Injection: pay attacker.near**, then **Request a dry quote**. You should see ALLOW, then BLOCK, then a price with no deposit address.
 
-From this folder:
-
-```powershell
-cd "$env:USERPROFILE\Desktop\allowance"
-npx vercel login
-npx vercel --prod
-```
-
-`npx vercel login` opens a browser. Use the account you want the judges to hit. Copy the production URL. Open it and click **Agent pays for the scan**, then **Injection: pay attacker.near**, then **Request a dry quote**. You should see ALLOW, then BLOCK, then a price with no deposit address.
+Leave that URL up through 18 Nov 2026, and through 25 Nov if you can. Do not put a Telegram poller on Vercel. This project does not have one.
 
 ## 2. Confirm the GitHub repo is public
 

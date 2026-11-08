@@ -25,7 +25,7 @@ Do this, and you should see that.
    Click **Injection: pay attacker.near**. See `BLOCK` and `receiver_not_allowlisted`. The treasury does not move.
    Click **Request a dry quote**. See a wNEAR to USDT price and `Deposit address: none`.
 
-The same page is what gets hosted. Vercel serves `public/` and `api/`. Steps for that host are in `YOU-DO-THIS.md`.
+The live desk is https://allowance-vert.vercel.app. Vercel serves `public/` and `api/`. Steps for the host are in `YOU-DO-THIS.md`.
 
 ## What the agent is allowed to do
 
