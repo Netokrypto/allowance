@@ -1,6 +1,6 @@
-# What you still do
+# Submission checklist
 
-The repo, the tests, the desk, and the dry-quote client are done. These steps need your accounts. I must not post on X, send the hackathon form, invent a NEAR account, or deploy to mainnet.
+The desk, the tests, and the dry-quote client are in this repo. The steps below use a NEAR account, an X post, and the hackathon form.
 
 Deadline: **14 Nov 2026, 23:59 UTC**. Leave the hosted page up through **18 Nov**, and through **25 Nov** if you can.
 
@@ -28,9 +28,7 @@ Testnet NEAR is free from https://near-faucet.io if you later deploy the contrac
 
 ## 4. Film the demo and post it on X
 
-You post this. I do not.
-
-Record the screen while you do these three clicks on the Vercel URL, or on `http://localhost:3000` after `npm start`:
+Record the screen while doing these three clicks on the Vercel URL, or on `http://localhost:3000` after `npm start`:
 
 1. **Agent pays for the scan.** The banner says ALLOW and the treasury drops.
 2. **Injection: pay attacker.near.** The banner says BLOCK and the treasury stays.
@@ -51,13 +49,13 @@ https://github.com/Netokrypto/allowance
 @NEARProtocol #NEARHackathon
 ```
 
-Replace the GitHub line with the Vercel URL as well if you have it. Send me the post URL when it is up.
+The Vercel URL can go in the same post, under the repository link.
 
 ## 5. Submit the hackathon form once
 
 Do this after the repo is public and the X post is live. The form cannot be edited after you send it. Mistakes go to https://nearhackathon.com/request-changes , not a second submission.
 
-Fill these yourself. I will not guess them.
+Fill in the personal fields before sending. The form accepts each repository once.
 
 - Project name: `Allowance`
 - Your name
@@ -75,12 +73,10 @@ Description you can paste:
 Allowance is a trading desk whose agent can pay for market data and fill one settlement a human pinned. The agent signs with a NEAR function-call key scoped to a single contract method. The contract holds the budget. The human sets the daily cap, the per-call cap, and the allowlist, and pins the exact receiver and amount. The agent pays an allowlisted data vendor, then requests a dry NEAR Intents quote from wNEAR to USDT. A dry quote returns a price and no deposit address, so no funds move. A prompt-injected command that transfers NEAR, calls another contract, or pays an attacker is refused, and the treasury does not change.
 ```
 
-When you want me to send it, reply with every value above and a clear yes. I will print the JSON and wait for that yes before I POST it. One try per repository.
-
-Form, if you prefer to send it yourself: https://nearhackathon.com/#apply
+Send the form from https://nearhackathon.com/#apply. One submission per repository. It cannot be edited after it is sent.
 
 ## 6. Deploying the contract later
 
 Not required for the submission. The judged prototype is `npm test` and the web desk.
 
-`contract/allowance.js` is near-sdk-js source. This environment has no contract toolchain, so there is no wasm in the repo. When you want it on testnet, install the NEAR contract toolchain from https://docs.near.org/ , deploy `allowance.js` to a testnet account you control, and add a function-call key whose methods are only `execute` and whose receiver is that contract. Keep the full-access key in your wallet. Do not put that full-access key in the project or in Vercel.
+`contract/allowance.js` is near-sdk-js source. This repo does not include a compiled wasm. To put it on testnet, install the NEAR contract toolchain from https://docs.near.org/ , deploy `allowance.js` to a testnet account, and add a function-call key whose methods are only `execute` and whose receiver is that contract. Keep the full-access key in a wallet, out of the project and out of Vercel.
