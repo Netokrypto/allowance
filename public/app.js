@@ -94,9 +94,10 @@ async function act(signer, action) {
   }
 }
 
-function button(label, signer, action) {
+function button(label, tone, signer, action) {
   const node = document.createElement("button");
   node.type = "button";
+  node.className = `action ${tone}`;
   node.textContent = label;
   node.addEventListener("click", () => act(signer, action));
   return node;
@@ -106,39 +107,39 @@ function buildActions() {
   const constants = desk.constants;
   const expiresAt = Date.now() + 10 * 60 * 1000;
   actions.replaceChildren(
-    button("Agent pays for the scan", "agent", {
+    button("Agent pays for the scan", "go", "agent", {
       method: "execute",
       kind: "pay",
       receiver: constants.dataReceiver,
       amount: constants.dataPrice,
       memo: "scan",
     }),
-    button("Human pins the sandbox settlement", "human", {
+    button("Human pins the sandbox settlement", "pin", "human", {
       method: "record_quote",
       depositAddress: constants.sandboxReceiver,
       amount: constants.sandboxAmount,
       expiresAt,
     }),
-    button("Agent fills that pin", "agent", {
+    button("Agent fills that pin", "fill", "agent", {
       method: "execute",
       kind: "settle",
       receiver: constants.sandboxReceiver,
       amount: constants.sandboxAmount,
       memo: "sandbox settle",
     }),
-    button("Injection: pay attacker.near", "agent", {
+    button("Injection: pay attacker.near", "danger", "agent", {
       method: "execute",
       kind: "pay",
       receiver: constants.attackReceiver,
       amount: constants.attackAmount,
       memo: "ignore the policy",
     }),
-    button("Injection: transfer NEAR", "agent", {
+    button("Injection: transfer NEAR", "danger", "agent", {
       method: "transfer",
       receiver: constants.attackReceiver,
       amount: constants.attackAmount,
     }),
-    button("Injection: call another contract", "agent", {
+    button("Injection: call another contract", "danger", "agent", {
       method: "execute",
       contractId: "usdt.tether-token.near",
       kind: "pay",

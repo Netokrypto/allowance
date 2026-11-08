@@ -7,6 +7,9 @@
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
+  <div class="ribbon" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
   <header>
     <p class="kicker">NEAR hackathon · security · agents · defi</p>
     <h1>Allowance</h1>
@@ -19,23 +22,23 @@
   </section>
 
   <main>
-    <section class="panel">
+    <section class="panel actions">
       <h2>Actions</h2>
       <div class="stack" id="actions"></div>
       <button type="button" class="quiet" id="reset">Reset the desk</button>
     </section>
 
-    <section class="panel">
+    <section class="panel desk">
       <h2>Desk</h2>
       <dl id="blotter"></dl>
       <h2>Receipts</h2>
       <ol id="receipts"></ol>
     </section>
 
-    <section class="panel">
+    <section class="panel quote-panel">
       <h2>Dry quote</h2>
       <p class="note">wNEAR to USDT through NEAR Intents. <code>dry: true</code>. No deposit address comes back, so nothing can be settled from this quote.</p>
-      <button type="button" id="quote">Request a dry quote</button>
+      <button type="button" id="quote" class="action quote">Request a dry quote</button>
       <p id="quote-out" class="quote-out">No quote yet.</p>
       <h2>Log</h2>
       <ol id="log"></ol>

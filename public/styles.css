@@ -1,13 +1,7 @@
 :root {
   color-scheme: dark;
-  --bg: #12110c;
-  --panel: #1c1b14;
-  --ink: #f4ecd9;
-  --dim: #a39880;
-  --line: #3c382b;
-  --allow: #dff25a;
-  --block: #ff5c3a;
-  --ready: #f4ecd9;
+  --ink: #1a1030;
+  --paper: #fffdf8;
 }
 
 * { box-sizing: border-box; }
@@ -15,92 +9,187 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background: var(--bg);
   color: var(--ink);
-  font-family: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
+  font-family: "Segoe UI", "Trebuchet MS", sans-serif;
+  background:
+    radial-gradient(circle at 8% -10%, #ff4fa3 0 18%, transparent 19%),
+    radial-gradient(circle at 96% 0%, #3d7bff 0 16%, transparent 17%),
+    radial-gradient(circle at 70% 110%, #ffe14a 0 22%, transparent 23%),
+    linear-gradient(160deg, #2a1468 0%, #123a8c 48%, #0d8f78 100%);
 }
+
+.ribbon {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  height: 14px;
+}
+
+.ribbon span:nth-child(1) { background: #ff3d8a; }
+.ribbon span:nth-child(2) { background: #ff8a1e; }
+.ribbon span:nth-child(3) { background: #ffe14a; }
+.ribbon span:nth-child(4) { background: #39f07a; }
+.ribbon span:nth-child(5) { background: #3de0ff; }
+.ribbon span:nth-child(6) { background: #7a5cff; }
 
 header, main, .decision { width: min(1100px, calc(100% - 32px)); margin-inline: auto; }
 
-header { padding: 36px 0 8px; }
-
-.kicker, h2, button, .mark, code, dl, ol, .note, .reason {
-  font-family: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+header {
+  margin-top: 22px;
+  padding: 22px 24px 18px;
+  background: #ffe14a;
+  border: 4px solid #1a1030;
+  border-radius: 22px;
+  box-shadow: 8px 8px 0 #ff3d8a;
 }
 
 .kicker {
   margin: 0 0 8px;
-  color: var(--dim);
+  color: #7a2cff;
   font-size: 12px;
+  font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
-h1 { margin: 0; font-size: clamp(40px, 6vw, 68px); font-weight: 560; letter-spacing: -0.03em; }
-
-.lede { max-width: 38rem; color: var(--dim); font-size: 18px; line-height: 1.4; }
-
-.decision {
-  margin-top: 12px;
-  padding: 16px 18px;
-  border: 1px solid var(--line);
-  background: #17160f;
+h1 {
+  margin: 0;
+  font-family: "Arial Black", "Segoe UI", sans-serif;
+  font-size: clamp(46px, 7vw, 78px);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  color: #ff3d8a;
+  text-shadow: 3px 3px 0 #1a1030;
 }
 
-.mark { margin: 0; font-size: 28px; letter-spacing: 0.12em; }
-.reason { margin: 6px 0 0; color: var(--dim); }
-.decision.allow .mark { color: var(--allow); }
-.decision.block .mark { color: var(--block); }
+.lede { max-width: 40rem; margin: 12px 0 0; font-size: 18px; line-height: 1.4; }
+
+.decision {
+  margin-top: 16px;
+  padding: 18px 20px;
+  border: 4px solid #1a1030;
+  border-radius: 18px;
+  background: #3de0ff;
+  box-shadow: 8px 8px 0 #1a1030;
+}
+
+.mark {
+  margin: 0;
+  font-family: "Arial Black", "Segoe UI", sans-serif;
+  font-size: 34px;
+  letter-spacing: 0.08em;
+}
+
+.reason { margin: 6px 0 0; font-weight: 650; }
+.decision.allow { background: #39f07a; }
+.decision.block { background: #ff5c7a; }
 
 main {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 14px;
-  padding: 14px 0 40px;
+  gap: 16px;
+  padding: 16px 0 48px;
 }
 
 .panel {
-  border: 1px solid var(--line);
-  background: var(--panel);
+  border: 4px solid #1a1030;
+  border-radius: 20px;
   padding: 16px;
   min-width: 0;
+  box-shadow: 8px 8px 0 #1a1030;
 }
 
-h2 { margin: 0 0 12px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--dim); }
+.panel.actions { background: #fff4fb; }
+.panel.desk { background: #e8fff4; }
+.panel.quote-panel { background: #eef2ff; }
+
+h2 {
+  margin: 0 0 12px;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.panel.actions h2 { color: #d0126a; }
+.panel.desk h2 { color: #067a4d; }
+.panel.quote-panel h2 { color: #3a2ad0; }
 
 .stack, dl, ol { margin: 0; padding: 0; }
-.stack { display: grid; gap: 8px; }
+.stack { display: grid; gap: 10px; }
 
 button {
   appearance: none;
-  border: 1px solid var(--line);
-  background: #262418;
+  border: 3px solid #1a1030;
+  border-radius: 12px;
   color: var(--ink);
   text-align: left;
-  padding: 10px 12px;
+  padding: 11px 12px;
   cursor: pointer;
-  font-size: 13px;
+  font: 700 14px/1.3 "Segoe UI", sans-serif;
+  box-shadow: 4px 4px 0 #1a1030;
 }
 
-button:hover { border-color: var(--ink); }
-button:disabled { opacity: 0.5; cursor: wait; }
-button.quiet { margin-top: 12px; width: 100%; color: var(--dim); }
+button:hover { transform: translate(-1px, -1px); box-shadow: 5px 5px 0 #1a1030; }
+button:disabled { opacity: 0.55; cursor: wait; transform: none; }
+
+button.action.go { background: #39f07a; }
+button.action.pin { background: #3de0ff; }
+button.action.fill { background: #ff8a1e; }
+button.action.danger { background: #ff5c7a; }
+button.action.quote { background: #b89bff; width: 100%; }
+
+button.quiet {
+  margin-top: 12px;
+  width: 100%;
+  background: #fffdf8;
+  color: #1a1030;
+}
 
 dl { display: grid; gap: 8px; }
-div.row { display: grid; grid-template-columns: 92px 1fr; gap: 8px; font-size: 13px; }
-dt { color: var(--dim); }
-dd { margin: 0; overflow-wrap: anywhere; }
+div.row {
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  gap: 8px;
+  font-size: 14px;
+  background: #fffdf8;
+  border: 2px solid #1a1030;
+  border-radius: 10px;
+  padding: 8px;
+}
+dt { color: #5b4b86; font-weight: 700; }
+dd { margin: 0; overflow-wrap: anywhere; font-weight: 700; }
 
-.note, .quote-out { color: var(--dim); font-size: 13px; line-height: 1.45; }
-.quote-out { min-height: 4.5em; }
+.note, .quote-out { font-size: 14px; line-height: 1.45; }
+.quote-out {
+  min-height: 4.5em;
+  margin: 10px 0 0;
+  padding: 10px;
+  background: #fffdf8;
+  border: 2px solid #1a1030;
+  border-radius: 12px;
+  font-weight: 700;
+}
+
+code {
+  background: #ffe14a;
+  padding: 0 4px;
+  border-radius: 4px;
+}
 
 ol { list-style: none; display: grid; gap: 8px; }
-li { font-size: 12px; line-height: 1.4; border-top: 1px solid var(--line); padding-top: 8px; }
-li strong.allow { color: var(--allow); }
-li strong.block { color: var(--block); }
+li {
+  font-size: 13px;
+  line-height: 1.4;
+  background: #fffdf8;
+  border: 2px solid #1a1030;
+  border-radius: 10px;
+  padding: 8px;
+}
+li strong.allow { color: #067a4d; }
+li strong.block { color: #c4124a; }
 
 h2 + ol, .quote-out + h2 { margin-top: 18px; }
 
 @media (max-width: 860px) {
   main { grid-template-columns: 1fr; }
+  header, .decision, .panel { box-shadow: 5px 5px 0 #1a1030; }
 }
