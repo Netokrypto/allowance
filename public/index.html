@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Allowance</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header>
+    <p class="kicker">NEAR hackathon · security · agents · defi</p>
+    <h1>Allowance</h1>
+    <p class="lede">The agent pays for a scan and fills one settlement the human pinned. The key in its process cannot do the rest.</p>
+  </header>
+
+  <section id="decision" class="decision" aria-live="polite">
+    <p class="mark" id="mark">READY</p>
+    <p class="reason" id="reason">Load a desk, then run one action.</p>
+  </section>
+
+  <main>
+    <section class="panel">
+      <h2>Actions</h2>
+      <div class="stack" id="actions"></div>
+      <button type="button" class="quiet" id="reset">Reset the desk</button>
+    </section>
+
+    <section class="panel">
+      <h2>Desk</h2>
+      <dl id="blotter"></dl>
+      <h2>Receipts</h2>
+      <ol id="receipts"></ol>
+    </section>
+
+    <section class="panel">
+      <h2>Dry quote</h2>
+      <p class="note">wNEAR to USDT through NEAR Intents. <code>dry: true</code>. No deposit address comes back, so nothing can be settled from this quote.</p>
+      <button type="button" id="quote">Request a dry quote</button>
+      <p id="quote-out" class="quote-out">No quote yet.</p>
+      <h2>Log</h2>
+      <ol id="log"></ol>
+    </section>
+  </main>
+
+  <script src="/app.js" type="module"></script>
+</body>
+</html>

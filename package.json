@@ -1,0 +1,16 @@
+{
+  "name": "allowance",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A trading desk whose agent can spend only what a NEAR function-call key and a policy allow.",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test",
+    "start": "node src/server.js",
+    "demo": "node src/demo.js",
+    "attack": "node src/attack.js"
+  }
+}
