@@ -237,7 +237,9 @@ test("the http handler rejects a desk whose agent key was widened", () => {
 
 test("the contract source names every policy reason", async () => {
   const source = await readFile(new URL("../contract/allowance.js", import.meta.url), "utf8");
+  const rust = await readFile(new URL("../contract-rs/src/lib.rs", import.meta.url), "utf8");
   for (const reason of REASONS) {
     assert.equal(source.includes(reason), true, reason);
+    assert.equal(rust.includes(reason), true, reason);
   }
 });

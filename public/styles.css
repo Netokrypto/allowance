@@ -83,6 +83,20 @@ h1 {
 .decision.allow { background: #39f07a; }
 .decision.block { background: #ff5c7a; }
 
+.chain-wrap { width: min(1100px, calc(100% - 32px)); margin: 16px auto 0; }
+.panel.chain { background: #fff4d6; }
+.panel.chain h2 { color: #9a4d00; }
+.chain-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.chain-head h2 { margin: 0; }
+#connect { width: auto; white-space: nowrap; }
+.panel.chain .stack { margin-top: 12px; }
+
 main {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;

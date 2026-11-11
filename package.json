@@ -11,6 +11,24 @@
     "test": "node --test",
     "start": "node src/server.js",
     "demo": "node src/demo.js",
-    "attack": "node src/attack.js"
+    "attack": "node src/attack.js",
+    "build:wallet": "esbuild src/browser-chain.js --bundle --format=esm --outfile=public/chain-client.js"
+  },
+  "dependencies": {
+    "buffer": "^6.0.3",
+    "near-api-js": "^5.1.1",
+    "util": "^0.12.5"
+  },
+  "devDependencies": {
+    "@near-wallet-selector/core": "^10.1.4",
+    "@near-wallet-selector/here-wallet": "^10.1.4",
+    "@near-wallet-selector/hot-wallet": "^10.1.4",
+    "@near-wallet-selector/meteor-wallet": "^10.1.4",
+    "@near-wallet-selector/modal-ui": "^10.1.4",
+    "@near-wallet-selector/my-near-wallet": "^10.1.4",
+    "esbuild": "^0.28.2"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true
   }
 }

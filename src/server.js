@@ -1,11 +1,28 @@
 import { createServer } from "node:http";
 import { readFile } from "node:fs/promises";
+import { readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { agentExecute, chainInfo } from "./chain-rpc.js";
 import { handleAct, handleDesk, handleQuote } from "./http.js";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const publicDir = path.join(root, "public");
+
+function loadEnv() {
+  try {
+    const text = readFileSync(path.join(root, ".env"), "utf8");
+    for (const line of text.split(/\r?\n/)) {
+      const match = line.match(/^([A-Z0-9_]+)=(.*)$/);
+      if (!match || process.env[match[1]]) continue;
+      process.env[match[1]] = match[2];
+    }
+  } catch {
+    // Production reads these from the host environment.
+  }
+}
+
+loadEnv();
 const port = Number(process.env.PORT) || 3000;
 
 const types = {
@@ -54,6 +71,14 @@ async function serveStatic(req, res) {
 const server = createServer(async (req, res) => {
   const url = new URL(req.url, "http://localhost");
   try {
+    if (req.method === "GET" && url.pathname === "/api/chain") {
+      send(res, 200, chainInfo());
+      return;
+    }
+    if (req.method === "POST" && url.pathname === "/api/chain-act") {
+      send(res, 200, await agentExecute(await readJson(req)));
+      return;
+    }
     if (req.method === "GET" && url.pathname === "/api/desk") {
       const outcome = handleDesk();
       send(res, outcome.status, outcome.body);

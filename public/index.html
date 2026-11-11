@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Allowance</title>
   <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/wallet-selector.css">
 </head>
 <body>
   <div class="ribbon" aria-hidden="true">
@@ -19,6 +20,18 @@
   <section id="decision" class="decision" aria-live="polite">
     <p class="mark" id="mark">READY</p>
     <p class="reason" id="reason">Load a desk, then run one action.</p>
+  </section>
+
+  <section class="chain-wrap">
+    <section class="panel chain">
+      <div class="chain-head">
+        <h2>Your wallet on testnet</h2>
+        <button type="button" class="action pin" id="connect">Connect NEAR wallet</button>
+      </div>
+      <p class="note" id="chain-account">Connect a testnet wallet. You sign the human steps. The agent signs with a function-call key that can only call execute.</p>
+      <div class="stack" id="chain-actions"></div>
+      <p id="chain-out" class="quote-out">No on-chain desk yet.</p>
+    </section>
   </section>
 
   <main>
@@ -46,5 +59,6 @@
   </main>
 
   <script src="/app.js" type="module"></script>
+  <script src="/chain-client.js" type="module"></script>
 </body>
 </html>
